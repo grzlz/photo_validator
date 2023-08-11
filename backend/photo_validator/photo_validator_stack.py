@@ -21,7 +21,7 @@ class PhotoValidatorStack(Stack):
         tag_lambda = _lambda.Function(
             self, 'TagLambda',
             runtime=_lambda.Runtime.PYTHON_3_7,
-            code=_lambda.Code.from_asset("lambda"),
+            code=_lambda.Code.from_asset("lambda/function.zip"),
             handler='image_tagger.handler'
         )
 
