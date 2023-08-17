@@ -2,10 +2,9 @@ from aws_cdk import (
     # Duration,
     Stack,
     aws_lambda as _lambda,
+    aws_lambda_python_alpha as _alambda,
     aws_apigateway as apigw,
-    aws_iam as iam,
-    aws_s3 as s3
-    # aws_sqs as sqs,
+    aws_iam as iam
 )
 from constructs import Construct
 
@@ -14,27 +13,17 @@ class PhotoValidatorStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        s3_bucket = s3.Bucket(self, 'icarus-lambda')
-
         api = apigw.RestApi(self, 'ImageTagAPI',
             rest_api_name='Image tagger',
             description='This service tags images.'
         )      
                 
-        tag_lambda = _lambda.Function(
+        tag_lambda = _alambda.PythonFunction(
             self, 'TagLambda',
+            entry='./lambda',
             runtime=_lambda.Runtime.PYTHON_3_7,
-            code=_lambda.Code.from_asset('lambda'),
-            handler='image_tagger.handler'
-        )
-
-        s3_bucket.grant_read(tag_lambda)
-
-        tag_lambda.add_to_role_policy(
-            iam.PolicyStatement(
-            actions=["s3:GetObject"],
-            resources=[f"{s3_bucket.bucket_arn}/*"]
-            )
+            index='image_tagger.py'
+            handler='handler'
         )
 
 
