@@ -36,6 +36,14 @@ class PhotoValidatorStack(Stack):
 
         tag_lambda.add_to_role_policy(
             iam.PolicyStatement(
+            actions=["s3:GetObject"],
+            resources=[f"{s3_bucket.bucket_arn}/*"]
+            )
+        )
+
+
+        tag_lambda.add_to_role_policy(
+            iam.PolicyStatement(
                 actions=["rekognition:DetectLabels"],
                 resources=["*"]
             )
