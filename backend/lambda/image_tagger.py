@@ -4,7 +4,7 @@ import base64
 import json
 import openai
 
-openai.api_key = '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'
+openai.api_key = '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'
 client = boto3.client('rekognition')
 
 def refine_data(tag_list):
