@@ -22,7 +22,7 @@ class PhotoValidatorStack(Stack):
             self, 'TagLambda',
             entry='./lambda',
             runtime=_lambda.Runtime.PYTHON_3_7,
-            index='image_tagger.py'
+            index='image_tagger.py',
             handler='handler'
         )
 
