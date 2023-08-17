@@ -8,7 +8,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-class PhotoValidatorStack(Stack):
+class PhotoVStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -21,7 +21,7 @@ class PhotoValidatorStack(Stack):
         tag_lambda = _lambda.Function(
             self, 'TagLambda',
             runtime=_lambda.Runtime.PYTHON_3_7,
-            code=_lambda.Code.from_asset("lambda/function.zip"),
+            code=_lambda.Code.from_asset("lambda"),
             handler='image_tagger.handler'
         )
 

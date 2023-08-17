@@ -3,11 +3,11 @@ import os
 
 import aws_cdk as cdk
 
-from photo_validator.photo_validator_stack import PhotoValidatorStack
+from photo_v.photo_v_stack import PhotoVStack
 
 
 app = cdk.App()
-PhotoValidatorStack(app, "PhotoValidatorStack",
+PhotoVStack(app, "PhotoVStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
