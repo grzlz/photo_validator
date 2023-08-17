@@ -24,12 +24,8 @@ class PhotoValidatorStack(Stack):
         tag_lambda = _lambda.Function(
             self, 'TagLambda',
             runtime=_lambda.Runtime.PYTHON_3_7,
-            code=_lambda.Code.from_bucket(s3_bucket, 'function.zip'),
-            handler='image_tagger.handler',
-            environment={
-                'S3_BUCKET': 'icarus-lambda',
-                'ZIP_FILE_KEY': 'function.zip'
-            }
+            code=_lambda.Code.from_asset('lambda'),
+            handler='image_tagger.handler'
         )
 
         s3_bucket.grant_read(tag_lambda)
