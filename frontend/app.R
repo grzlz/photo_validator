@@ -32,7 +32,7 @@ server <- function(input, output, session) {
     # Send the base64 encoded image to the API using POST
 
     ## DESPUES DE EJECUTAR EL CDK, CAMBIA EL URL AQUÍ
-    url <- "https://20fmt24vrj.execute-api.us-west-1.amazonaws.com/prod/getTag"
+    url <- "https://2qy62alp48.execute-api.us-east-1.amazonaws.com/prod/getTag"
     response <- POST(url, body = base64_img, encode = "raw", add_headers("Content-Type" = "text/plain"))
     
     # Parse the response
