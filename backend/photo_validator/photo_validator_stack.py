@@ -1,5 +1,5 @@
 from aws_cdk import (
-    # Duration,
+    Duration,
     Stack,
     aws_lambda as _lambda,
     aws_lambda_python_alpha as _alambda,
@@ -23,7 +23,8 @@ class PhotoValidatorStack(Stack):
             entry='./lambda',
             runtime=_lambda.Runtime.PYTHON_3_7,
             index='image_tagger.py',
-            handler='handler'
+            handler='handler',
+            timeout=Duration.seconds(60)
         )
 
 
