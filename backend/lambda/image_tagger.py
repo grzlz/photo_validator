@@ -26,7 +26,11 @@ def handler(event, context):
     detect_objects = client.detect_labels(Image={'Bytes': source_bytes})
     labels = [i["Name"] for i in detect_objects["Labels"]]
 
+    print(labels)
+
     refined_labels = refine_data(labels)
+
+    print(refined_labels)
 
     return {
         'statusCode': 200,
